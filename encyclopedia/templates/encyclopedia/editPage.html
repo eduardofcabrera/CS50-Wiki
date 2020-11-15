@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layoutTextArea.html" %}
+
+{% block Type %}
+<h2>{{ title }}</h2>
+<h2>Edit Page</h2> 
+{% endblock %}
+
+
+{% block form %}
+<div style="width: 800px; padding-left: 20px; padding-top: 10px;">
+    <form action="{% url 'edit' page=title %}" method="POST">
+        {% csrf_token %}
+        <input id="textInput" type="hidden" value="VAlUE" onkeyup="checkText()"/>
+        <textarea id="textArea" placeholder="Type here" name="textArea" onkeyup="checkText()">{{ content }}</textarea>
+        <input id="buttonSave" type="submit" value="Save"/>
+    </form>
+</div>
+{% endblock %}
